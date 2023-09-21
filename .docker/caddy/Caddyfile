@@ -1,0 +1,16 @@
+:80 {
+    root * /var/www/html/public
+
+    # serve files directly if they can be found (e.g. CSS or JS files in public/)
+    encode zstd gzip
+    file_server
+
+    php_fastcgi php:9000
+
+    # return 404 for all other php files not matching the front controller
+    # this prevents access to other php files you don't want to be accessible.
+    @phpFile {
+        path *.php*
+    }
+    error @phpFile "Not found" 404
+}

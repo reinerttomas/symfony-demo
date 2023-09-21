@@ -1,0 +1,56 @@
+version: '3.9'
+
+services:
+  web:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "8080:80"
+    volumes:
+      - ./.docker/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./:/var/www/html
+      - caddy-data:/data
+      - caddy-config:/config
+    networks:
+      - internal
+    depends_on:
+      - php
+
+  php:
+    build:
+      context: .
+      dockerfile: .docker/php/Dockerfile
+    restart: unless-stopped
+    volumes:
+      - ./:/var/www/html
+    networks:
+      - internal
+
+#  database:
+#    image: mariadb:10.11-jammy
+#    environment:
+#      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+#      MARIADB_DATABASE: ${DB_DATABASE}
+#      MARIADB_USER: ${DB_USERNAME}
+#      MARIADB_PASSWORD: ${DB_PASSWORD}
+#    secrets:
+#      - db_root_password
+#    volumes:
+#      - ./.docker/mariadb/custom.cnf:/etc/mysql/conf.d/custom.cnf
+#      - db-data:/var/lib/mysql
+#    ports:
+#      - "3306:3306"
+#    networks:
+#      - internal
+
+networks:
+  internal:
+
+#secrets:
+#  db_root_password:
+#    file: db_root_password.txt
+
+volumes:
+  caddy-data:
+  caddy-config:
+#  db-data:
