@@ -38,7 +38,7 @@ class UserController extends AbstractController
             throw $this->createNotFoundException($e->getMessage(), $e);
         }
 
-        $this->messageBus->dispatch(new SendWelcomeEmail($user));
+        $this->messageBus->dispatch(SendWelcomeEmail::from($user));
         $this->addFlash('success', sprintf('Welcome email was sent to "%s"', $user->getEmail()));
 
         return $this->redirectToRoute('user_list');
