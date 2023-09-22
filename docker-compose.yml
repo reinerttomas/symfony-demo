@@ -26,31 +26,42 @@ services:
     networks:
       - internal
 
-#  database:
-#    image: mariadb:10.11-jammy
-#    environment:
-#      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
-#      MARIADB_DATABASE: ${DB_DATABASE}
-#      MARIADB_USER: ${DB_USERNAME}
-#      MARIADB_PASSWORD: ${DB_PASSWORD}
-#    secrets:
-#      - db_root_password
-#    volumes:
-#      - ./.docker/mariadb/custom.cnf:/etc/mysql/conf.d/custom.cnf
-#      - db-data:/var/lib/mysql
-#    ports:
-#      - "3306:3306"
-#    networks:
-#      - internal
+  database:
+    image: mariadb:10.11-jammy
+    restart: unless-stopped
+    environment:
+      MARIADB_ROOT_PASSWORD_FILE: /run/secrets/db_root_password
+      MARIADB_DATABASE: ${DB_DATABASE}
+      MARIADB_USER: ${DB_USER}
+      MARIADB_PASSWORD: ${DB_PASSWORD}
+    secrets:
+      - db_root_password
+    volumes:
+      - ./.docker/mariadb/custom.cnf:/etc/mysql/conf.d/custom.cnf
+      - db-data:/var/lib/mysql
+    ports:
+      - "3306:3306"
+    networks:
+      - internal
+
+  adminer:
+    image: dockette/adminer:dg
+    restart: unless-stopped
+    ports:
+      - "8000:80"
+    networks:
+      - internal
+    depends_on:
+      - database
 
 networks:
   internal:
 
-#secrets:
-#  db_root_password:
-#    file: db_root_password.txt
+secrets:
+  db_root_password:
+    file: db_root_password.txt
 
 volumes:
   caddy-data:
   caddy-config:
-#  db-data:
+  db-data:
