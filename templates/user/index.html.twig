@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+    <div class="col-lg-8 mx-auto p-4 py-md-5">
+        <h1 class="text-body-emphasis mb-5">Users</h1>
+
+        {% include 'common/flash.html.twig' %}
+
+        <table class="table table-striped align-middle">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">FirstName</th>
+                    <th scope="col">LastName</th>
+                    <th scope="col">Age</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                {% for user in users %}
+                    <tr>
+                        <th scope="row">{{ user.id }}</th>
+                        <td>{{ user.firstName }}</td>
+                        <td>{{ user.lastName }}</td>
+                        <td>{{ user.age }}</td>
+                        <td>{{ user.gender.text }}</td>
+                        <td>{{ user.email }}</td>
+                        <td>
+                            <a href="{{ url('user_send_welcome_email', { id: user.id}) }}" class="btn btn-primary btn-sm">Send</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+
+    </div>
+{% endblock %}
