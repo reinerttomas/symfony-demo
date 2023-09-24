@@ -12,6 +12,7 @@ framework:
         routing:
             # Route your messages to the transports
             'App\Message\SendWelcomeEmail': async
+            'App\Message\ChangeProductPriceMessage': async
 
 # when@test:
 #    framework:

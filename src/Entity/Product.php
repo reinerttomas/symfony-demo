@@ -86,9 +86,9 @@ class Product
         return $this;
     }
 
-    public function getPrice(): int
+    public function getPrice(): float
     {
-        return $this->price;
+        return (float) ($this->price / 100);
     }
 
     public function setPrice(float $price): self
@@ -98,9 +98,9 @@ class Product
         return $this;
     }
 
-    public function getDiscountPercentage(): int
+    public function getDiscountPercentage(): float
     {
-        return $this->discountPercentage;
+        return (float) ($this->discountPercentage / 100);
     }
 
     public function setDiscountPercentage(float $discountPercentage): self
@@ -110,9 +110,9 @@ class Product
         return $this;
     }
 
-    public function getRating(): int
+    public function getRating(): float
     {
-        return $this->rating;
+        return (float) ($this->rating / 100);
     }
 
     public function setRating(float $rating): self
