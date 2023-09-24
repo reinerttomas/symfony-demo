@@ -14,7 +14,3 @@
 /.idea/
 /Makefile
 /db_root_password.txt
-
-###> phpstan/phpstan ###
-phpstan.neon
-###< phpstan/phpstan ###

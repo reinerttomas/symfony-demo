@@ -1,0 +1,15 @@
+parameters:
+	level: 6
+	paths:
+		- src
+
+	symfony:
+	    containerXmlPath: var/cache/test/App_KernelTestDebugContainer.xml
+	    consoleApplicationLoader: tests/console-application.php
+
+	doctrine:
+	    ormRepositoryClass: Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository
+	    objectManagerLoader: tests/object-manager.php
+
+	scanDirectories:
+	    - var/cache/test/Symfony/Config
