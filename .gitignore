@@ -14,3 +14,7 @@
 /.idea/
 /Makefile
 /db_root_password.txt
+
+###> friendsofphp/php-cs-fixer ###
+/.php-cs-fixer.cache
+###< friendsofphp/php-cs-fixer ###

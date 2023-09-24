@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -20,7 +21,7 @@ class ProductController extends AbstractController
         $products = $this->productRepository->findAll();
 
         return $this->render('product/index.html.twig', [
-            'products' => $products
+            'products' => $products,
         ]);
     }
 }

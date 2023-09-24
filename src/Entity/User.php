@@ -58,7 +58,7 @@ class User
         return $this->lastName;
     }
 
-    public function setName(string $firstName, string $lastName): User
+    public function setName(string $firstName, string $lastName): self
     {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -71,7 +71,7 @@ class User
         return $this->age;
     }
 
-    public function setAge(int $age): User
+    public function setAge(int $age): self
     {
         $this->age = $age;
 
@@ -88,7 +88,7 @@ class User
         return $this->email;
     }
 
-    public function setEmail(string $email): User
+    public function setEmail(string $email): self
     {
         $this->email = $email;
 

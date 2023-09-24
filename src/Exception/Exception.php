@@ -1,10 +1,10 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Exception;
 
 use Exception as BaseException;
-use Throwable;
 
 abstract class Exception extends BaseException
 {
@@ -13,7 +13,7 @@ abstract class Exception extends BaseException
     final public function __construct(
         string $message = '',
         int $code = 0,
-        ?Throwable $previous = null,
+        \Throwable $previous = null,
     ) {
         parent::__construct($message, $code, $previous);
     }

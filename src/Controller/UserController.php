@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -25,7 +26,7 @@ class UserController extends AbstractController
         $users = $this->userRepository->findAll();
 
         return $this->render('user/index.html.twig', [
-            'users' => $users
+            'users' => $users,
         ]);
     }
 
