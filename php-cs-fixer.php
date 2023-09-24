@@ -30,8 +30,9 @@ return (new PhpCsFixer\Config())
         'php_unit_strict' => true,
         'strict_comparison' => true,
         'strict_param' => true,
+        'concat_space' => ['spacing' => 'one'],
 //        'blank_line_between_import_groups' => false,
     ])
     ->setFinder($finder)
-    ->setCacheFile(__DIR__.'/var/.php-cs-fixer.cache')
+    ->setCacheFile(__DIR__ . '/var/.php-cs-fixer.cache')
 ;

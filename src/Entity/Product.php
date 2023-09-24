@@ -14,15 +14,47 @@ class Product
     private int $id;
 
     #[ORM\Column(length: 255)]
-    private string $name;
+    private string $title;
+
+    #[ORM\Column(length: 255)]
+    private string $description;
 
     #[ORM\Column]
     private int $price;
 
-    public function __construct(string $name, int $price)
-    {
-        $this->name = $name;
+    #[ORM\Column]
+    private int $discountPercentage;
+
+    #[ORM\Column]
+    private int $rating;
+
+    #[ORM\Column]
+    private int $stock;
+
+    #[ORM\Column(length: 255)]
+    private string $brand;
+
+    #[ORM\Column(length: 255)]
+    private string $category;
+
+    public function __construct(
+        string $title,
+        string $description,
+        int $price,
+        int $discountPercentage,
+        int $rating,
+        int $stock,
+        string $brand,
+        string $category,
+    ) {
+        $this->title = $title;
+        $this->description = $description;
         $this->price = $price;
+        $this->discountPercentage = $discountPercentage;
+        $this->rating = $rating;
+        $this->stock = $stock;
+        $this->brand = $brand;
+        $this->category = $category;
     }
 
     public function getId(): int
@@ -30,14 +62,26 @@ class Product
         return $this->id;
     }
 
-    public function getName(): string
+    public function getTitle(): string
     {
-        return $this->name;
+        return $this->title;
     }
 
-    public function setName(string $name): self
+    public function setTitle(string $title): self
     {
-        $this->name = $name;
+        $this->title = $title;
+
+        return $this;
+    }
+
+    public function getDescription(): string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
 
         return $this;
     }
@@ -47,9 +91,69 @@ class Product
         return $this->price;
     }
 
-    public function setPrice(int $price): self
+    public function setPrice(float $price): self
     {
-        $this->price = $price;
+        $this->price = (int) ($price * 100);
+
+        return $this;
+    }
+
+    public function getDiscountPercentage(): int
+    {
+        return $this->discountPercentage;
+    }
+
+    public function setDiscountPercentage(float $discountPercentage): self
+    {
+        $this->discountPercentage = (int) ($discountPercentage * 100);
+
+        return $this;
+    }
+
+    public function getRating(): int
+    {
+        return $this->rating;
+    }
+
+    public function setRating(float $rating): self
+    {
+        $this->rating = (int) ($rating * 100);
+
+        return $this;
+    }
+
+    public function getStock(): int
+    {
+        return $this->stock;
+    }
+
+    public function setStock(int $stock): self
+    {
+        $this->stock = $stock;
+
+        return $this;
+    }
+
+    public function getBrand(): string
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(string $brand): self
+    {
+        $this->brand = $brand;
+
+        return $this;
+    }
+
+    public function getCategory(): string
+    {
+        return $this->category;
+    }
+
+    public function setCategory(string $category): self
+    {
+        $this->category = $category;
 
         return $this;
     }
