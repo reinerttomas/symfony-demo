@@ -1,12 +1,13 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Enum;
 
 enum Gender: string
 {
-    CASE MALE = 'male';
-    CASE FEMALE = 'female';
+    case MALE = 'male';
+    case FEMALE = 'female';
 
     public function text(): string
     {

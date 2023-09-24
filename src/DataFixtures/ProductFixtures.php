@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\DataFixtures;
@@ -6,7 +7,6 @@ namespace App\DataFixtures;
 use App\Entity\Product;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
-use Exception;
 
 class ProductFixtures extends Fixture
 {
@@ -26,56 +26,57 @@ class ProductFixtures extends Fixture
 
     /**
      * @return iterable<array{name: string, price: int}>
-     * @throws Exception
+     *
+     * @throws \Exception
      */
     private function getData(): iterable
     {
-        yield[
+        yield [
             'name' => 'iPhone 9',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'iPhone X',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'Samsung Universe 9',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'OPPOF19"',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'Huawei P30',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'Samsung Galaxy Book',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'Microsoft Surface Laptop 4',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'Infinix INBOOK',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'P Pavilion 15-DK1056WM',
             'price' => random_int(100, 1000),
         ];
 
-        yield[
+        yield [
             'name' => 'Non-Alcoholic Concentrated Perfume Oil',
             'price' => random_int(100, 1000),
         ];

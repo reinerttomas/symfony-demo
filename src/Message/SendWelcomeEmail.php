@@ -10,8 +10,8 @@ final class SendWelcomeEmail
     {
     }
 
-    public static function from(User $user): SendWelcomeEmail
+    public static function from(User $user): self
     {
-        return new SendWelcomeEmail($user->getId());
+        return new self($user->getId());
     }
 }

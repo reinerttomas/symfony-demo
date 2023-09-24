@@ -30,7 +30,7 @@ class UserRepository extends ServiceEntityRepository
         $user = $this->find($id);
 
         if ($user === null) {
-            throw NotFoundException::new()->withMessage('User not found. ID: ' . $id);
+            throw NotFoundException::new()->withMessage('User not found. ID: '.$id);
         }
 
         return $user;
