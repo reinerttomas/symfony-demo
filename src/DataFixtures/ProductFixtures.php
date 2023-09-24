@@ -14,8 +14,14 @@ class ProductFixtures extends Fixture
     {
         foreach ($this->getData() as $data) {
             $product = new Product(
-                $data['name'],
-                $data['price'],
+                $data['title'],
+                $data['description'],
+                (int) ($data['price'] * 100),
+                (int) ($data['discountPercentage'] * 100),
+                (int) ($data['rating'] * 100),
+                $data['stock'],
+                $data['brand'],
+                $data['category'],
             );
 
             $manager->persist($product);
@@ -25,60 +31,22 @@ class ProductFixtures extends Fixture
     }
 
     /**
-     * @return iterable<array{name: string, price: int}>
-     *
-     * @throws \Exception
+     * @return iterable<array{
+     *      id: int,
+     *      title: string,
+     *      description: string,
+     *      price: float,
+     *      discountPercentage: float,
+     *      rating: float,
+     *      stock: int,
+     *      brand: string,
+     *      category: string,
+     *      thumbnail: string,
+     *      images: array<string>
+     *  }>
      */
     private function getData(): iterable
     {
-        yield [
-            'name' => 'iPhone 9',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'iPhone X',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'Samsung Universe 9',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'OPPOF19"',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'Huawei P30',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'Samsung Galaxy Book',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'Microsoft Surface Laptop 4',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'Infinix INBOOK',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'P Pavilion 15-DK1056WM',
-            'price' => random_int(100, 1000),
-        ];
-
-        yield [
-            'name' => 'Non-Alcoholic Concentrated Perfume Oil',
-            'price' => random_int(100, 1000),
-        ];
+        return json_decode(file_get_contents(__DIR__ . '/data/products.json'), true);
     }
 }

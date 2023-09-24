@@ -70,7 +70,7 @@
         "fcs": "vendor/bin/php-cs-fixer fix --config=php-cs-fixer.php --diff",
         "ci": [
             "@phpstan",
-            "@fcs"
+            "@ccs"
         ]
     },
     "conflict": {

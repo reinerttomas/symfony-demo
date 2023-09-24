@@ -10,8 +10,13 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Name</th>
+                    <th scope="col">Title</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Discount</th>
+                    <th scope="col">Rating</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">Brand</th>
+                    <th scope="col">Category</th>
                 </tr>
             </thead>
             <tbody>
@@ -19,8 +24,13 @@
                 {% for product in products %}
                     <tr>
                         <th scope="row">{{ product.id }}</th>
-                        <td>{{ product.name }}</td>
-                        <td>{{ product.price }}</td>
+                        <td>{{ product.title }}</td>
+                        <td>{{ product.price / 100 }}</td>
+                        <td>{{ product.discountPercentage / 100 }}</td>
+                        <td>{{ product.rating / 100 }}</td>
+                        <td>{{ product.stock }}</td>
+                        <td>{{ product.brand }}</td>
+                        <td>{{ product.category }}</td>
                     </tr>
                 {% endfor %}
 
